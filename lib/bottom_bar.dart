@@ -13,16 +13,34 @@ class BottomBarPage extends StatefulWidget {
 
 class _BottomBarPageState extends State<BottomBarPage> {
   int _selectedIndex = 0;
-  final List _pages  = [
-    const HomePage(),
-    const ProfilePage(),
-    const StorePage(),
-    const PanierPage(),
+  final List<Map<String, dynamic>> _pages  = [
+    {
+      'page': const HomePage(),
+      'title': 'Home',
+    },
+    {
+      'page': const StorePage(),
+      'title': 'Store',
+    },
+    {
+      'page': const PanierPage(),
+      'title': 'Panier',
+    },
+    {
+      'page': const ProfilePage(),
+      'title': 'Profile',
+    },
+
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      appBar: AppBar(
+        title:  Text(_pages[_selectedIndex]['title'], style: TextStyle(color: Colors.lightGreen)),
+        centerTitle: true,
+        backgroundColor: Colors.grey[900],
+      ),
+      body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.brown[100],
