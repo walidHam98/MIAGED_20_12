@@ -12,6 +12,7 @@ class BottomBarPage extends StatefulWidget {
 }
 
 class _BottomBarPageState extends State<BottomBarPage> {
+
   int _selectedIndex = 0;
   final List<Map<String, dynamic>> _pages  = [
     {
@@ -27,7 +28,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
       'title': 'Panier',
     },
     {
-      'page': const ProfilePage(),
+      'page':  ProfilePage(),
       'title': 'Profile',
     },
 
@@ -36,6 +37,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title:  Text(_pages[_selectedIndex]['title'], style: TextStyle(color: Colors.lightGreen)),
         centerTitle: true,
         backgroundColor: Colors.grey[900],

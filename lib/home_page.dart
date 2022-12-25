@@ -6,6 +6,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context){
     return Scaffold(
     appBar: AppBar(
+      automaticallyImplyLeading: false,
     title: const Text('Welcome to MIAGED', style: TextStyle(color: Colors.lightGreen)),
     centerTitle: true,
     backgroundColor: Colors.grey[900],
