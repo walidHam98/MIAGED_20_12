@@ -38,9 +38,10 @@ class _BottomBarPageState extends State<BottomBarPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:  Text(_pages[_selectedIndex]['title'], style: TextStyle(color: Colors.lightGreen)),
+        title:  Text(_pages[_selectedIndex]['title'], style: TextStyle(color: Colors.black)),
+
         centerTitle: true,
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.red[300],
       ),
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(

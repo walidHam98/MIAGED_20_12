@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:provider/provider.dart';
 import 'package:vinted_like/home_page.dart';
 import 'package:vinted_like/bottom_bar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:vinted_like/firebase/firebaseConfig.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vinted_like/Auth/login.dart';
 
 
 class ProfilePage extends StatefulWidget {
@@ -8,15 +15,49 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  String? _email;
 
-  int _isPressed=0;
+  final _nameTextController = TextEditingController();
+
+    @override
+    void initState() {
+      getUser();
+      super.initState();
+    }
+  void signOut()  async{
+    await FirebaseAuth.instance.signOut();
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const LoginPage())
+    );
+}
+
+  Future<void> getUser() async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    try {
+      String _uid = user!.uid;
+        _nameTextController.text = user.displayName!;
+    } catch (error) {
+      print(error);
+    } finally {
+      setState(() {
+        _email = user!.email;
+      });
+    }
+  }
+
+
+  int isPressed=0;
 void  _onTap() {
     setState(() {
-      if(_isPressed == 1){
+      if(isPressed == 1){
 
       }
-      else if(_isPressed == 2){
+      else if(isPressed == 2){
 
+         signOut();
+         print("deconecterr");
       }
       else{
         Navigator.push(
@@ -39,14 +80,14 @@ void  _onTap() {
              ListTile(
                //need to make it onPressed on Icon// onTap: () {},
                title:  Text(
-                   '  HI, ' + 'username',
+                   '  HI, ',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                ),
                subtitle: Text(
-                   '  user@mail.com ',
+                   '$_email',
                    style: TextStyle(
                      fontSize: 15,
                      fontWeight: FontWeight.bold,
@@ -100,6 +141,7 @@ void  _onTap() {
                  ),
 
                ),
+
 
              ),
              ListTile(

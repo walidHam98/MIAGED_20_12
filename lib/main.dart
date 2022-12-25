@@ -11,6 +11,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vinted_like/firebase/firebaseConfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

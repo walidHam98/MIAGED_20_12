@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:vinted_like/info_product.dart';
+import 'package:vinted_like/addProduct.dart';
+
 
 
 class StorePage extends StatelessWidget {
@@ -8,7 +11,22 @@ class StorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-
+      body: ProductInformation(),
+      appBar: AppBar(
+      leading:  IconButton(
+        icon: Icon(Icons.add),
+        /*color: Colors.grey,
+        highlightColor: Colors.red,*/
+        tooltip: 'Add Product',
+        onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddProductPage()),
+          );
+        },
+      ),
+      ),
+    );
 
 
       /*body: Column(
@@ -31,6 +49,5 @@ class StorePage extends StatelessWidget {
           ),
         ],
       ),*/
-    );
   }
 }
